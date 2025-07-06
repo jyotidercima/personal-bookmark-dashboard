@@ -1,30 +1,39 @@
+:root {
+    --heading-color: rgb(220, 255, 44);
+    --category-head: rgb(219, 219, 255);
+    --text-color-primary: rgb(243, 255, 5);
+    --text-color-secondary: rgb(118, 232, 118);
+    --card-gradient-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.288), rgba(0, 0, 0, 0.271));
+    --card-gradient-bg2: linear-gradient(180deg, rgba(225, 131, 131, 0.288), rgba(206, 221, 45, 0.271));
+    --card-border-color: rgba(23, 23, 232, 0.626);
+    --black-back: black;
+    --header-bg-color: linear-gradient(360deg, blue, var(--black-back));
+    --font-primary: "Rowdies", sans-serif;
+    --font-secondary: "Ubuntu", sans-serif;
+    --font-third: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+
+}
+
 * {
     margin: 0;
     padding: 0;
 }
+
 
 body {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     /* background-image: linear-gradient(180deg, rgb(13, 0, 255) 40%,rgb(196, 228, 160) 10%,rgb(193, 190, 27) 10%,black 5%); */
-    background-color: black;
+    background-color: var(--black-back);
     overflow: auto;
 }
 
 header {
     text-align: center;
     z-index: 10;
-    background-image: linear-gradient(360deg, blue, black);
-}
-
-.black {
-    position: absolute;
-    background-color: rgba(0, 0, 0, 0.108);
-    height: 100vh;
-    width: 100vw;
-    margin: 0;
-    padding: 0;
+    background-image: var(--header-bg-color);
 }
 
 .head {
@@ -34,7 +43,8 @@ header {
     margin: 0 30px;
     padding: 20px;
     font-size: xx-large;
-    color: rgb(220, 255, 44);
+    color: var(--heading-color);
+    text-shadow: 8px 7px 5px var(--black-back);
     letter-spacing: 25px;
 
 }
@@ -45,7 +55,7 @@ q {
     padding: 10px;
     color: rgb(221, 245, 255);
     font-size: larger;
-    font-family: "Rowdies", sans-serif;
+    font-family: var(--font-primary);
 }
 
 main {
@@ -58,24 +68,24 @@ main {
 
 }
 
-.categories {
+.categories_card {
     /* border-top: 1px dashed blue; */
     padding: 2em;
     display: grid;
     gap: 10px;
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: .5fr 1fr 1fr;
-    color: rgb(45, 220, 255);
     z-index: 10;
-    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.288), rgba(0, 0, 0, 0.271));
+    background-image: var(--card-gradient-bg);
 }
 
-.categories h1 {
+.categories_card h1 {
     grid-column: 1 / 7;
     text-align: center;
-    color: rgb(219, 219, 255);
-    text-shadow: 5px 5px 5px rgb(59, 64, 56);
+    color: var(--category-head);
+    text-shadow: 8px 7px 5px var(--black-back);
     align-content: center;
+    font-family: var(--font-primary);
     /* background-color: antiquewhite;
     border-radius:20%; */
 }
@@ -100,7 +110,7 @@ main {
     grid-column: 4/6;
 }
 
-.links {
+.sub_card {
     /* border: 1px solid blue;
     border-radius: 20px;
     margin:5px;
@@ -108,18 +118,18 @@ main {
 
 }
 
-/* styleing containers */
+/* styling containers */
 
 .learning,
 .entertainment {
-    border-left: 2px solid rgba(42, 42, 45, 0.626);
+    border-left: 2px solid var(--card-border-color);
     border-top-left-radius: 30%;
     border-bottom-left-radius: 30%;
 }
 
 .social_media,
 .ai_tools {
-    border-right: 2px solid rgba(40, 40, 43, 0.666);
+    border-right: 2px solid var(--card-border-color);
     border-top-right-radius: 30%;
     border-bottom-right-radius: 30%;
 }
@@ -127,12 +137,14 @@ main {
 
 @media screen and (max-width: 1450px) {
 
-    .categories {
-        background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.288), rgba(0, 0, 0, 0.271));
+    .categories_card {
         border-radius: 15px;
         width: 80%;
         display: flex;
         flex-wrap: wrap;
+        /*adding blue side border at both side*/
+        border-left: 3px solid var(--card-border-color);
+        border-right: 3px solid var(--card-border-color);
     }
 
     main {
@@ -147,9 +159,8 @@ main {
 }
 
 @media screen and (max-width: 950px) {
-    .categories {
+    .categories_card {
         width: 80%;
-
     }
 
 }
@@ -167,8 +178,8 @@ main {
 
 
 
-/* style container sub container with image and icons*/
-.links {
+/* style container sub container with image icons*/
+.sub_card {
     height: 50px;
     width: 80px;
     padding: 10px;
@@ -192,29 +203,32 @@ main {
 .box_link {
     text-decoration: none;
     /* display: flex; */
-    color: rgb(243, 255, 5);
+    color: var(--text-color-primary);
     font-size: 10px;
     font-weight: 400;
+    font-family: var(--font-third);
 }
 
 /* adding hover effect */
-
 .box_link:hover {
     box-shadow: 0 0 50px 10px rgb(254, 254, 245);
-    color: rgb(143, 202, 54);
+    color: var(--text-color-secondary);
+}
+
+.categories_card:hover {
+    background-image: var(--card-gradient-bg2);
+
 }
 
 
 /*footer section styling*/
-
 footer {
     position: fixed;
     bottom: 0;
     padding: 10px 5px;
     background-color: rgb(49, 17, 17);
-    font-family: "Ubuntu", sans-serif;
-    ;
-    color: rgb(229, 233, 229);
+    font-family: var(--font-secondary);
+    color: var(--text-color-secondary);
     width: 100vw;
     z-index: 10;
 
