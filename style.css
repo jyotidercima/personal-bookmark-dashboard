@@ -216,6 +216,9 @@ main {
 .categories_card:hover {
     background-image: var(--card-gradient-bg2);
 
+    h1 {
+        color: var(--text-color-secondary);
+    }
 }
 
 
